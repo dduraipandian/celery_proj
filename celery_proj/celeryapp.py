@@ -37,19 +37,41 @@ def make_celery(app):
     print(app.import_name)
     celery = Celery(app.import_name, backend=result_backend, broker=broker_url)
 
-    celery.conf.update(
-        task_serializer='json',
-        accept_content=['json', 'pickle'],
-        result_serializer='pickle',
-        worker_prefetch_multiplier=1,  # to avoid early pre fetch to the queue
-        task_reject_on_worker_lost=True,  # to retry if the worker is killed
-        task_acks_late=True,  # to broker will only acknowledged after job completion
-        task_queues=task_queues,
-        broker_transport_options=broker_transport_options,
-        task_default_queue='default',
-        task_default_exchange_type='direct',
-        task_default_routing_key='default'
+    CELERY_QUEUE_DEFAULT = 'default'
+    CELERY_QUEUE_OTHER = 'other'
+
+    celery.conf["accpet_content"] = ['application/json']
+    celery.conf["task_serializer"] = 'json'
+    celery.conf["result_serializer"] = 'json'
+    celery.conf["task_acks_late"] = True
+    celery.conf["task_default_queue"] = CELERY_QUEUE_DEFAULT
+    celery.conf["worker_send_task_events"] = True
+    celery.conf["worker_prefetch_multiplier"] = 1
+    celery.conf["task_queues"] = (
+        Queue(
+            CELERY_QUEUE_DEFAULT,
+            Exchange(CELERY_QUEUE_DEFAULT),
+            routing_key=CELERY_QUEUE_DEFAULT,
+        ),
+        Queue(
+            CELERY_QUEUE_OTHER,
+            Exchange(CELERY_QUEUE_OTHER),
+            routing_key=CELERY_QUEUE_OTHER,
+        ),
     )
+    celery.conf["task_routes"] = {
+        'celery_proj.core.tasks.debug_task': {
+            'queue': 'default',
+            'routing_key': 'default',
+            'exchange': 'default',
+        },
+        'celery_proj.core.tasks.debug_task_other': {
+            'queue': 'other',
+            'routing_key': 'other',
+            'exchange': 'other',
+        },
+    }
+    celery.conf["task_default_exchange_type"] = 'direct'
 
     class ContextTask(celery.Task):
         def __call__(self, *args, **kwargs):
@@ -61,6 +83,7 @@ def make_celery(app):
     celery.autodiscover_tasks(
         [
             'celery_proj.tasks',
+            'celery_proj.core.tasks'
         ]
     )
     return celery

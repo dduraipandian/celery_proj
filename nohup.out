@@ -1,0 +1,144 @@
+[2020-08-23 17:26:01,310: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2020-08-23 17:26:01,321: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2020-08-23 17:26:01,332: INFO/MainProcess] mingle: searching for neighbors
+[2020-08-23 17:26:01,335: INFO/MainProcess] mingle: searching for neighbors
+[2020-08-23 17:26:02,359: INFO/MainProcess] mingle: all alone
+[2020-08-23 17:26:02,363: INFO/MainProcess] mingle: all alone
+[2020-08-23 17:26:02,382: INFO/MainProcess] c2_worker@Durais-MacBook-Air.local ready.
+[2020-08-23 17:26:02,385: INFO/MainProcess] c1_worker@Durais-MacBook-Air.local ready.
+[2020-08-23 17:26:48,726: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2020-08-23 17:26:48,734: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2020-08-23 17:26:48,743: INFO/MainProcess] mingle: searching for neighbors
+[2020-08-23 17:26:48,749: INFO/MainProcess] mingle: searching for neighbors
+[2020-08-23 17:26:49,775: INFO/MainProcess] mingle: all alone
+[2020-08-23 17:26:49,778: INFO/MainProcess] mingle: all alone
+[2020-08-23 17:26:49,800: INFO/MainProcess] c1_worker@Durais-MacBook-Air.local ready.
+[2020-08-23 17:26:49,801: INFO/MainProcess] c2_worker@Durais-MacBook-Air.local ready.
+celery_proj.celery_proj
+Traceback (most recent call last):
+  File "/Users/durai/work/venv/harvester/bin/celery", line 8, in <module>
+    sys.exit(main())
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/__main__.py", line 16, in main
+    _main()
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/bin/celery.py", line 322, in main
+    cmd.execute_from_commandline(argv)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/bin/celery.py", line 499, in execute_from_commandline
+    super(CeleryCommand, self).execute_from_commandline(argv)))
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/bin/base.py", line 305, in execute_from_commandline
+    return self.handle_argv(self.prog_name, argv[1:])
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/bin/celery.py", line 491, in handle_argv
+    return self.execute(command, argv)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/bin/celery.py", line 419, in execute
+    ).run_from_argv(self.prog_name, argv[1:], command=argv[0])
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/bin/worker.py", line 223, in run_from_argv
+    return self(*args, **options)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/bin/base.py", line 253, in __call__
+    ret = self.run(*args, **kwargs)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/bin/worker.py", line 258, in run
+    **kwargs)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/worker/worker.py", line 99, in __init__
+    self.app.loader.init_worker()
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/loaders/base.py", line 114, in init_worker
+    self.import_default_modules()
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/loaders/base.py", line 108, in import_default_modules
+    raise response
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/utils/dispatch/signal.py", line 288, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/vine/promises.py", line 170, in __call__
+    return self.throw()
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/vine/promises.py", line 167, in __call__
+    retval = fun(*final_args, **final_kwargs)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/app/base.py", line 663, in _autodiscover_tasks
+    return self._autodiscover_tasks_from_names(packages, related_name)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/app/base.py", line 669, in _autodiscover_tasks_from_names
+    packages() if callable(packages) else packages, related_name,
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/loaders/base.py", line 224, in autodiscover_tasks
+    related_name) if mod)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/loaders/base.py", line 249, in autodiscover_tasks
+    return [find_related_module(pkg, related_name) for pkg in packages]
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/loaders/base.py", line 249, in <listcomp>
+    return [find_related_module(pkg, related_name) for pkg in packages]
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/loaders/base.py", line 274, in find_related_module
+    raise e
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/loaders/base.py", line 270, in find_related_module
+    return importlib.import_module(module_name)
+  File "/Users/durai/.pyenv/versions/3.6.11/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 941, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'celery_proj.core'
+celery_proj.celery_proj
+Traceback (most recent call last):
+  File "/Users/durai/work/venv/harvester/bin/celery", line 8, in <module>
+    sys.exit(main())
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/__main__.py", line 16, in main
+    _main()
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/bin/celery.py", line 322, in main
+    cmd.execute_from_commandline(argv)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/bin/celery.py", line 499, in execute_from_commandline
+    super(CeleryCommand, self).execute_from_commandline(argv)))
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/bin/base.py", line 305, in execute_from_commandline
+    return self.handle_argv(self.prog_name, argv[1:])
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/bin/celery.py", line 491, in handle_argv
+    return self.execute(command, argv)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/bin/celery.py", line 419, in execute
+    ).run_from_argv(self.prog_name, argv[1:], command=argv[0])
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/bin/worker.py", line 223, in run_from_argv
+    return self(*args, **options)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/bin/base.py", line 253, in __call__
+    ret = self.run(*args, **kwargs)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/bin/worker.py", line 258, in run
+    **kwargs)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/worker/worker.py", line 99, in __init__
+    self.app.loader.init_worker()
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/loaders/base.py", line 114, in init_worker
+    self.import_default_modules()
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/loaders/base.py", line 108, in import_default_modules
+    raise response
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/utils/dispatch/signal.py", line 288, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/vine/promises.py", line 170, in __call__
+    return self.throw()
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/vine/promises.py", line 167, in __call__
+    retval = fun(*final_args, **final_kwargs)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/app/base.py", line 663, in _autodiscover_tasks
+    return self._autodiscover_tasks_from_names(packages, related_name)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/app/base.py", line 669, in _autodiscover_tasks_from_names
+    packages() if callable(packages) else packages, related_name,
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/loaders/base.py", line 224, in autodiscover_tasks
+    related_name) if mod)
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/loaders/base.py", line 249, in autodiscover_tasks
+    return [find_related_module(pkg, related_name) for pkg in packages]
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/loaders/base.py", line 249, in <listcomp>
+    return [find_related_module(pkg, related_name) for pkg in packages]
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/loaders/base.py", line 274, in find_related_module
+    raise e
+  File "/Users/durai/work/venv/harvester/lib/python3.6/site-packages/celery/loaders/base.py", line 270, in find_related_module
+    return importlib.import_module(module_name)
+  File "/Users/durai/.pyenv/versions/3.6.11/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 941, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'celery_proj.core'
+[2020-08-23 17:28:09,223: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2020-08-23 17:28:09,225: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2020-08-23 17:28:09,237: INFO/MainProcess] mingle: searching for neighbors
+[2020-08-23 17:28:09,239: INFO/MainProcess] mingle: searching for neighbors
+[2020-08-23 17:28:10,267: INFO/MainProcess] mingle: all alone
+[2020-08-23 17:28:10,274: INFO/MainProcess] mingle: all alone
+[2020-08-23 17:28:10,290: INFO/MainProcess] c2_worker@Durais-MacBook-Air.local ready.
+[2020-08-23 17:28:10,296: INFO/MainProcess] c1_worker@Durais-MacBook-Air.local ready.
+[2020-08-23 17:28:59,514: INFO/MainProcess] Received task: celery_proj.core.tasks.debug_task[29c68fc1-8071-4fea-8d0d-cbffd2545905]  
+[2020-08-23 17:28:59,520: INFO/MainProcess] Received task: celery_proj.core.tasks.debug_task_other[842dc8e3-2ecf-4ce2-808e-0759b555ab3e]  
+[2020-08-23 17:29:09,531: INFO/ForkPoolWorker-2] Task celery_proj.core.tasks.debug_task[29c68fc1-8071-4fea-8d0d-cbffd2545905] succeeded in 10.012879991991213s: 'Task is done.'
+[2020-08-23 17:29:09,536: INFO/ForkPoolWorker-2] Task celery_proj.core.tasks.debug_task_other[842dc8e3-2ecf-4ce2-808e-0759b555ab3e] succeeded in 10.012167387001682s: 'Task is done for other queue.'
